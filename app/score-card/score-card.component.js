@@ -4,8 +4,12 @@ angular.
   component('scoreCard',{
     templateUrl: 'score-card/score-card.tpl.html',
     controller: function ScoreCardController(UserDataService){
-        this.items = UserDataService.getList();
-        
+
+        this.golf = UserDataService.getSelectedGolf();
+        this.parcours = UserDataService.getSelectedParcours();
+        this.tee = UserDataService.getSelectedTee();
+        this.index = UserDataService.getIndex();
+
         this.holes = [
           {
             num: 1,
@@ -53,20 +57,20 @@ angular.
             score: ""
           },
         ]; //*/
-        
+
         this.score = 0;
-        
+
         this.total = function(){
           this.score = 0;
           for(var i = 0; i < this.holes.length; i++){
             if(this.holes[i].score != "") this.score += this.holes[i].score;
           }
         };
-        
+
         this.parTotal = 0;
         for(var i = 0; i < this.holes.length; i++){
           this.parTotal += this.holes[i].par;
         }
-        
+
     }
   });
