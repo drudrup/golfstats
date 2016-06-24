@@ -10,6 +10,9 @@ angular.
         this.tee = UserDataService.getSelectedTee();
         this.index = UserDataService.getIndex();
 
+        this.holes = this.parcours.trous;
+        console.log(this.holes);
+        /*
         this.holes = [
           {
             num: 1,
