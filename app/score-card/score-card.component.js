@@ -11,72 +11,24 @@ angular.
         this.index = UserDataService.getIndex();
 
         this.holes = this.parcours.trous;
-        console.log(this.holes);
-        /*
-        this.holes = [
-          {
-            num: 1,
-            par: 3,
-            score: ""
-          },
-          {
-            num: 2,
-            par: 5,
-            score: ""
-          },
-          {
-            num: 3,
-            par: 4,
-            score: ""
-          },
-          {
-            num: 4,
-            par: 5,
-            score: ""
-          },
-          {
-            num: 5,
-            par: 4,
-            score: ""
-          },
-          {
-            num: 6,
-            par: 4,
-            score: ""
-          },
-          {
-            num: 7,
-            par: 4,
-            score: ""
-          },
-          {
-            num: 8,
-            par: 4,
-            score: ""
-          },
-          {
-            num: 9,
-            par: 3,
-            score: ""
-          },
-        ]; //*/
+        
+        this.parTotal = 0;
+        for(var i = 0; i < this.holes.length; i++){
+          this.parTotal = (this.parTotal - (-this.holes[i].par));
+        }
 
         this.score = 0;
 
         this.total = function(){
           this.score = 0;
           for(var i = 0; i < this.holes.length; i++){
-            if(this.holes[i].score != "") this.score += this.holes[i].score;
+            if(typeof this.holes[i].score != "undefined") this.score += this.holes[i].score;
           }
         };
 
-        this.parTotal = 0;
-        for(var i = 0; i < this.holes.length; i++){
-          this.parTotal += this.holes[i].par;
-        }
-
         this.coupsRendus = function(){
-          return Math.round((this.index*this.tee.slope)/113 + (this.tee.sss - 72));
+          var par = 18/this.holes.length * this.parTotal;
+          return Math.round( ((this.index*this.tee.slope)/113 + (this.tee.sss - par)) / (18/this.holes.length) );
         }
 
     }
