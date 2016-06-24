@@ -1,10 +1,12 @@
-'use strict';
-
-// Declare app level module which depends on views, and components
-angular.module('golfStats', [])
-      .controller('GolfCardCtrl', function GolfCardCtrl($scope){
+// Register the 'scoreCard' component on the 'scoreCard' module,
+angular.
+  module('scoreCard').
+  component('scoreCard',{
+    templateUrl: 'score-card/score-card.tpl.html',
+    controller: function ScoreCardController(UserDataService){
+        this.items = UserDataService.getList();
         
-        $scope.holes = [
+        this.holes = [
           {
             num: 1,
             par: 3,
@@ -50,15 +52,21 @@ angular.module('golfStats', [])
             par: 3,
             score: ""
           },
-        ];
+        ]; //*/
         
-        $scope.score = 0;
+        this.score = 0;
         
-        $scope.total = function(){
-          $scope.score = 0;
-          for(var i = 0; i < $scope.holes.length; i++){
-            if($scope.holes[i].score != "") $scope.score += $scope.holes[i].score;
+        this.total = function(){
+          this.score = 0;
+          for(var i = 0; i < this.holes.length; i++){
+            if(this.holes[i].score != "") this.score += this.holes[i].score;
           }
         };
         
-      });
+        this.parTotal = 0;
+        for(var i = 0; i < this.holes.length; i++){
+          this.parTotal += this.holes[i].par;
+        }
+        
+    }
+  });

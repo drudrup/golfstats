@@ -1,27 +1,31 @@
 [
   {
-    "name": "Golf de Saint Sébastien sur Loire"
+    "name": "Golf de Saint Sebastien sur Loire",
     "parcours": [
             {
               "name": "9 Trous",
-              "tees": {
-                      "red": {
-                        "sss": "67",
-                        "slope": "113"
-                      },
-                      "blue": {
-                        "sss": "69.6",
-                        "slope": "112"
-                      },
-                      "yellow": {
-                        "sss": "67.2",
-                        "slope": "103"
-                      },
-                      "white": {
-                        "sss": "68.6",
-                        "slope": "106"
-                      }
-              },
+              "tees": [
+                    {
+                      "color": "red",
+                      "sss": "67",
+                      "slope": "113"
+                    },
+                    {
+                      "color": "blue",
+                      "sss": "69.6",
+                      "slope": "112"
+                    },
+                    {
+                      "color": "yellow",
+                      "sss": "67.2",
+                      "slope": "103"
+                    },
+                    {
+                      "color": "white",
+                      "sss": "68.6",
+                      "slope": "106"
+                    }
+              ],
               "trous": {
                         "1": {
                           "par": "3",
@@ -63,12 +67,13 @@
             },
             {
               "name": "Pitch and putt",
-              "tees": {
-                      "red": {
-                        "sss": "60",
-                        "slope": "120"
-                      }
-              },
+              "tees": [
+                    {
+                      "color": "black",
+                      "sss": "60",
+                      "slope": "120"
+                    }
+              ],
               "trous": {
                         "1": {
                           "par": "3",
@@ -111,28 +116,32 @@
     ]
   },
   {
-    "name": "Golf des Olonnes"
+    "name": "Golf des Olonnes",
     "parcours": [
             {
               "name": "18 Trous",
-              "tees": {
-                      "red": {
-                        "sss": "70.8",
-                        "slope": "129"
-                      },
-                      "blue": {
-                        "sss": "72.7",
-                        "slope": "126"
-                      },
-                      "yellow": {
-                        "sss": "71.1",
-                        "slope": "127"
-                      },
-                      "white": {
-                        "sss": "72.8",
-                        "slope": "135"
-                      }
-              },
+              "tees": [
+                    {
+                      "color": "red",
+                      "sss": "70.8",
+                      "slope": "129"
+                    },
+                    {
+                      "color": "blue",
+                      "sss": "72.7",
+                      "slope": "126"
+                    },
+                    {
+                      "color": "yellow",
+                      "sss": "71.1",
+                      "slope": "127"
+                    },
+                    {
+                      "color": "white",
+                      "sss": "72.8",
+                      "slope": "135"
+                    }
+              ],
               "trous": {
                         "1": {
                           "par": "4",
