@@ -72,5 +72,9 @@ angular.
           this.parTotal += this.holes[i].par;
         }
 
+        this.coupsRendus = function(){
+          return Math.round((this.index*this.tee.slope)/113 + (this.tee.sss - 72));
+        }
+
     }
   });
