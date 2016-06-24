@@ -47,23 +47,17 @@ angular.
 
 
       self.start = function(){
-        console.log(self.golfindex);
+
         for(var i=0; i<self.selectedParcours.tees.length; i++){
           if(self.selectedParcours.tees[i].color == self.selectedTeeColor){
             self.selectedTee = self.selectedParcours.tees[i];
           }
         }
-        /*var datas = {
-          "golf": self.selectedGolf,
-          "parcours": self.selectedParcours,
-          "tee": this.selectedTee,
-          "index": this.index
-        };*/
+
         UserDataService.setSelectedGolf(self.selectedGolf);
         UserDataService.setSelectedParcours(self.selectedParcours);
         UserDataService.setSelectedTee(self.selectedTee);
         UserDataService.setIndex(self.golfindex);
-        console.log(self.selectedTee);
       }
     }]
   });
