@@ -23,7 +23,7 @@
   <div class="form-group">
     <label for="selectTee">Select a tee</label>
     <select class="form-control" id="selectTee" ng-model="$ctrl.selectedTeeColor">
-      <option ng-repeat="tee in $ctrl.selectedTee" value="{{tee.color}}">
+      <option ng-repeat="tee in $ctrl.selectedParcours.tees" value="{{tee.color}}">
         {{tee.color}}
       </option>
     </select>
