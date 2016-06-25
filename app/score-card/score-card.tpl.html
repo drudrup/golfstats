@@ -30,6 +30,13 @@
         </td>
         <td>&nbsp;</td>
       </tr>
+      <tr>
+        <td>Coups rendus</td>
+        <td ng-repeat="hole in $ctrl.holes">
+          {{hole.coupsRendus}}
+        </td>
+        <td>{{$ctrl.coupsRendus()}}</td>
+      </tr>
     </thead>
     <tbody>
       <tr>

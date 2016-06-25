@@ -11,7 +11,7 @@ angular.
         this.index = UserDataService.getIndex();
 
         this.holes = this.parcours.trous;
-        
+
         this.parTotal = 0;
         for(var i = 0; i < this.holes.length; i++){
           this.parTotal = (this.parTotal - (-this.holes[i].par));
@@ -26,10 +26,25 @@ angular.
           }
         };
 
+        // Calcul du nombre de coups rendus
         this.coupsRendus = function(){
           var par = 18/this.holes.length * this.parTotal;
           return Math.round( ((this.index*this.tee.slope)/113 + (this.tee.sss - par)) / (18/this.holes.length) );
         }
+
+        // Répartition des coups rendus
+        this.holes.sort(function(a,b){
+          return parseFloat(a.hcp) - parseFloat(b.hcp);
+        });
+        for(var i = 0; i < this.holes.length; i++){
+          this.holes[i].coupsRendus = 0;
+        }
+        for(var i = 0; i < this.coupsRendus(); i++){
+          this.holes[(i)%this.holes.length].coupsRendus++;
+        }
+        this.holes.sort(function(a,b){
+          return parseFloat(a.num) - parseFloat(b.num);
+        });
 
     }
   });
