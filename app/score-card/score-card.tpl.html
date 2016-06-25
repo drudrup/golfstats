@@ -14,13 +14,35 @@
 
 <div class="tab-content">
 
-  <div ng-repeat="hole in $ctrl.holes" role="tabpanel" class="tab-pane" ng-class="{active: hole.num==1}" id="trou{{hole.num}}">
+  <div ng-repeat="hole in $ctrl.holes | filter:$ctrl.holes.num = 1" role="tabpanel" class="tab-pane active" id="trou{{hole.num}}">
     <h2>Trou n° {{hole.num}}</h2>
     <input type="number" ng-model="hole.score" ng-change="$ctrl.calculScore()" size=2 max=10 min=0 />
 
     <ul class="flippy">
       <li>
         <button href="#trou{{hole.num-(-1)}}" role="tab" data-toggle="tab" aria-controls="total" aria-expanded="false">Trou suivant</button>
+      </li>
+    </ul>
+  </div>
+
+  <div ng-repeat="hole in $ctrl.holes | filter:(($ctrl.holes.num > 1) && ($ctrl.holes.num < $ctrl.holes.length)) " role="tabpanel" class="tab-pane" id="trou{{hole.num}}">
+    <h2>Trou n° {{hole.num}}</h2>
+    <input type="number" ng-model="hole.score" ng-change="$ctrl.calculScore()" size=2 max=10 min=0 />
+
+    <ul class="flippy">
+      <li>
+        <button href="#trou{{hole.num-(-1)}}" role="tab" data-toggle="tab" aria-controls="total" aria-expanded="false">Trou suivant</button>
+      </li>
+    </ul>
+  </div>
+
+  <div ng-repeat="hole in $ctrl.holes | filter:$ctrl.holes.num = $ctrl.holes.length" role="tabpanel" class="tab-pane" id="trou{{hole.num}}">
+    <h2>Trou n° {{hole.num}}</h2>
+    <input type="number" ng-model="hole.score" ng-change="$ctrl.calculScore()" size=2 max=10 min=0 />
+
+    <ul class="flippy">
+      <li>
+        <button href="#total" role="tab" data-toggle="tab" aria-controls="total" aria-expanded="false">Trou suivant</button>
       </li>
     </ul>
   </div>
