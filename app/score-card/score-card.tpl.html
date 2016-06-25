@@ -3,7 +3,7 @@
 <div>Parcours : {{$ctrl.parcours.name}}</div>
 <div>Tee : {{$ctrl.tee.color}} - SSS : {{$ctrl.tee.sss}} - Slope : {{$ctrl.tee.slope}}</div>
 <div>Index : {{$ctrl.index}}</div>
-<div>Coups rendus : {{$ctrl.coupsRendus()}}</div>
+<div>Coups rendus : {{$ctrl.coupsRendus}}</div>
 <div class="table-responsive">
   <table class="table table-striped table-condensed">
     <thead>
@@ -35,18 +35,32 @@
         <td ng-repeat="hole in $ctrl.holes">
           {{hole.coupsRendus}}
         </td>
-        <td>{{$ctrl.coupsRendus()}}</td>
+        <td>{{$ctrl.coupsRendus}}</td>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>Score</td>
         <td ng-repeat="hole in $ctrl.holes">
-          <input type="number" ng-model="hole.score" ng-change="$ctrl.total()" size=2 max=10 min=0 />
+          <input type="number" ng-model="hole.score" ng-change="$ctrl.calculScore()" size=2 max=10 min=0 />
         </td>
         <td>
-        {{$ctrl.score}}
+        {{$ctrl.scoreStroke}}
         </td>
+      </tr>
+      <tr>
+        <td>Stb Brut</td>
+        <td ng-repeat="hole in $ctrl.holes">
+          {{hole.scoreStbBrut}}
+        </td>
+        <td>{{$ctrl.scoreStbBrut}}</td>
+      </tr>
+      <tr>
+        <td>Stb Net</td>
+        <td ng-repeat="hole in $ctrl.holes">
+          {{hole.scoreStbNet}}
+        </td>
+        <td>{{$ctrl.scoreStbNet}}</td>
       </tr>
     </tbody>
   </table>
