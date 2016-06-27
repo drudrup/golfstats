@@ -17,6 +17,10 @@ angular.
           this.parTotal = (this.parTotal - (-this.holes[i].par));
         }
 
+        // Mise à 0 des scores par trou
+        for(var i = 0; i < this.holes.length; i++){
+          this.holes[i].score = 0;
+        }
 
         // Calcul du nombre de coups rendus
         this.calculCoupsRendus = function(){
@@ -36,6 +40,24 @@ angular.
           this.holes[(i)%this.holes.length].coupsRendus++;
         }
 
+        // Fonction d'ajout/retrait d'un point
+        this.addStroke = function(i){
+          if(typeof this.holes[i-1].score == "undefined"){
+            this.holes[i-1].score = 1;
+          }else{
+            this.holes[i-1].score += 1;
+          }
+          this.calculScore();
+        }
+        this.removeStroke = function(i){
+          if(typeof this.holes[i-1].score == "undefined" || this.holes[i-1].score == 0){
+            this.holes[i-1].score = 0;
+          }else{
+            this.holes[i-1].score -= 1;
+          }
+          this.calculScore();
+        }
+        
         // Calcul du score
         this.scoreStroke = 0;
         this.scoreStbBrut = 0;
