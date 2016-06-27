@@ -1,37 +1,41 @@
-<form>
+<div class="jumbotron text-center">
+  <form class="text-center">
 
-  <div class="form-group">
-    <label for="selectGolf">Select a golf</label>
-    <select class="form-control" id="selectGolf" ng-model="$ctrl.selectedGolfName" ng-change="$ctrl.updateParcours()">
-      <option ng-repeat="golf in $ctrl.golfs" value="{{golf.name}}">
-        {{golf.name}}
-      </option>
-    </select>
-  </div>
+    <div class="form-group">
+      <label for="selectGolf">Select a golf</label>
+      <select class="form-control" id="selectGolf" ng-model="$ctrl.selectedGolfName" ng-change="$ctrl.updateParcours()">
+        <option ng-repeat="golf in $ctrl.golfs" value="{{golf.name}}">
+          {{golf.name}}
+        </option>
+      </select>
+    </div>
 
-  <div class="form-group">
-    <label for="selectParcours">Select a parcours</label>
-    <select class="form-control" id="selectParcours" ng-model="$ctrl.selectedParcoursName" ng-change="$ctrl.updateTees()">
-      <option ng-repeat="parcours in $ctrl.selectedGolf.parcours" value="{{parcours.name}}">
-        {{parcours.name}}
-      </option>
-    </select>
-  </div>
+    <div class="form-group">
+      <label for="selectParcours">Select a parcours</label>
+      <select class="form-control" id="selectParcours" ng-model="$ctrl.selectedParcoursName" ng-change="$ctrl.updateTees()">
+        <option ng-repeat="parcours in $ctrl.selectedGolf.parcours" value="{{parcours.name}}">
+          {{parcours.name}}
+        </option>
+      </select>
+    </div>
 
-  <div class="form-group">
-    <label for="selectTee">Select a tee</label>
-    <select class="form-control" id="selectTee" ng-model="$ctrl.selectedTeeColor">
-      <option ng-repeat="tee in $ctrl.selectedParcours.tees" value="{{tee.color}}">
-        {{tee.color}}
-      </option>
-    </select>
-  </div>
+    <div class="form-group">
+      <label for="selectTee">Select a tee</label>
+      <select class="form-control" id="selectTee" ng-model="$ctrl.selectedTeeColor">
+        <option ng-repeat="tee in $ctrl.selectedParcours.tees" value="{{tee.color}}">
+          {{tee.color}}
+        </option>
+      </select>
+    </div>
 
 
-  <div class="form-group">
-    <label for="inputIdx">Enter index</label>
-    <input type="number" class="form-control" id="inputIdx" placeholder="" min=0 max=54 size=2 ng-model="$ctrl.golfindex" >
-  </div>
+    <div class="form-group">
+      <label for="inputIdx">Enter index</label>
+      <input type="number" class="form-control" id="inputIdx" placeholder="" min=0 max=54 size=2 ng-model="$ctrl.golfindex" >
+    </div>
 
-</form>
-<a href="/#!/card" class="btn btn-success" ng-click="$ctrl.start()">Start</a>
+  </form>
+
+  <a href="/#!/card" class="btn btn-success" ng-click="$ctrl.start()">Start</a>
+
+</div>

@@ -18,34 +18,42 @@
 
   <!-- Trous un par un -->
   <div ng-repeat="hole in $ctrl.holes" role="tabpanel" class="tab-pane" ng-class="{active: hole.num==1}" id="trou{{hole.num}}">
-    <h1>Trou n° {{hole.num}}</h1>
-    <div class="infos">
-      <div class="left">
-        Par {{hole.par}}
-      </div>
-      <div class="right">
-        Hcp {{hole.hcp}}
-      </div>
-      <div class="left">
-        Départ {{$ctrl.tee.color}}
-      </div>
-      <div class="right">
-        {{hole.coupsRendus}} coups rendus
+    <div class="page-header">
+      <h1 class="text-center">Trou n° {{hole.num}}</h1>
+      <div class="container">
+        <div class="infos row">
+          <div class="col-xs-6">
+            Par {{hole.par}}
+          </div>
+          <div class="col-xs-6 text-right">
+            Hcp {{hole.hcp}}
+          </div>
+          <div class="col-xs-6">
+            Départ {{$ctrl.tee.color}}
+          </div>
+          <div class="col-xs-6 text-right">
+            {{hole.coupsRendus}} coups rendus
+          </div>
+        </div>
       </div>
     </div>
-    <button class="btn btn-default" ng-click="$ctrl.removeStroke(hole.num)"> - </button>
-    <!--
-    <input type="number" ng-model="hole.score" ng-change="$ctrl.calculScore()" size=2 max=10 min=0 />
-    -->
-    <span>{{hole.score}}</span>
-    <button class="btn btn-default" ng-click="$ctrl.addStroke(hole.num)"> + </button>
     
-    <div class="next">
+    
+    <div class="text-center jumbotron">
+      <button class="btn btn-default" ng-click="$ctrl.removeStroke(hole.num)"><span class="glyphicon glyphicon-minus"></span></button>
+      <!--
+      <input type="number" ng-model="hole.score" ng-change="$ctrl.calculScore()" size=2 max=10 min=0 />
+      -->
+      <span class="jumbotron h1">{{hole.score}}</span>
+      <button class="btn btn-default" ng-click="$ctrl.addStroke(hole.num)"><span class="glyphicon glyphicon-plus"></span></button>
+    </div>
+    
+    <div class="text-center">
       <!--
       <button href="#trou{{hole.num-1}}" role="tab" data-toggle="tab" aria-controls="total" aria-expanded="false"> &lt; </button>
       -->
-      <button class="btn btn-success" href="#trou{{hole.num-(-1)}}" ng-if="hole.num < $ctrl.holes.length" role="tab" data-toggle="tab" aria-controls="total" aria-expanded="false">Trou suivant</button>
-      <button class="btn btn-success" href="#total" ng-if="hole.num == $ctrl.holes.length" role="tab" data-toggle="tab" aria-controls="total" aria-expanded="false">Carte de score</button>
+      <button class="btn btn-success" href="#trou{{hole.num-(-1)}}" ng-if="hole.num < $ctrl.holes.length" role="tab" data-toggle="tab" aria-controls="total" aria-expanded="false">Trou suivant <span class="glyphicon glyphicon-arrow-right"></span></button>
+      <button class="btn btn-success" href="#total" ng-if="hole.num == $ctrl.holes.length" role="tab" data-toggle="tab" aria-controls="total" aria-expanded="false"><span class="glyphicon glyphicon-calendar"></span> Carte de score</button>
     </div>
   </div>
 

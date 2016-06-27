@@ -6,7 +6,7 @@ angular.
 
       $routeProvider.
         when('/', {
-          template: '<h1>Welcome in golfStats</h1><prepare-game></prepare-game>'
+          template: '<h1 class="text-center">Golf Scorer</h1><prepare-game></prepare-game>'
         }).
         when('/card', {
           template: '<score-card></score-card>'
