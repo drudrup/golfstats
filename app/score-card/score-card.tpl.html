@@ -61,24 +61,26 @@
   <div role="tabpanel" class="tab-pane" id="total">
     
     <div class="jumbotron text-center">
+      <p class="lead">Résultat</p>
+      
       <h1><span ng-if="$ctrl.scoreStroke - $ctrl.parTotal > 0">+</span>{{$ctrl.scoreStroke - $ctrl.parTotal}}</h1>
       
       <div class="container">
         <div class="row">
           <div class="col-xs-4">
-            Strokes
-            <h3 class="label label-success" ng-if="$ctrl.scoreStroke - $ctrl.parTotal < 1">{{$ctrl.scoreStroke}}</h3>
-            <h3 class="label label-warning" ng-if="$ctrl.scoreStroke - $ctrl.parTotal > 0">{{$ctrl.scoreStroke}}</h3>
+            Strokes<br/>
+            <span class="label label-success" ng-if="$ctrl.scoreStroke - $ctrl.parTotal < 1">{{$ctrl.scoreStroke}}</span>
+            <span class="label label-warning" ng-if="$ctrl.scoreStroke - $ctrl.parTotal > 0">{{$ctrl.scoreStroke}}</span>
           </div>
           <div class="col-xs-4">
             Stb Brut<br/>
-            <h3 class="label label-success" ng-if="$ctrl.scoreStbBrut > 36">{{$ctrl.scoreStbBrut}}</h3>
-            <h3 class="label label-warning" ng-if="$ctrl.scoreStbBrut < 37">{{$ctrl.scoreStbBrut}}</h3>
+            <span class="label label-success" ng-if="$ctrl.scoreStbBrut > 36">{{$ctrl.scoreStbBrut}}</span>
+            <span class="label label-warning" ng-if="$ctrl.scoreStbBrut < 37">{{$ctrl.scoreStbBrut}}</span>
           </div>
           <div class="col-xs-4">
             Stb Net<br/>
-            <h3 class="label label-success" ng-if="$ctrl.scoreStbNet > 36">{{$ctrl.scoreStbNet}}</h3>
-            <h3 class="label label-warning" ng-if="$ctrl.scoreStbNet < 37">{{$ctrl.scoreStbNet}}</h3>
+            <span class="label label-success" ng-if="$ctrl.scoreStbNet > 36">{{$ctrl.scoreStbNet}}</span>
+            <span class="label label-warning" ng-if="$ctrl.scoreStbNet < 37">{{$ctrl.scoreStbNet}}</span>
           </div>
         </div>
       </div>
