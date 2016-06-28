@@ -1,0 +1,202 @@
+<!--
+<h1>Golf Score Card</h1>
+
+<div class="dropdown">
+  <button id="myTabDrop1" class="dropdown-toggle btn btn-default" data-toggle="dropdown" aria-controls="myTabDrop1-contents" aria-expanded="false">Select <span class="caret"></span></button>
+  <ul class="dropdown-menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
+    <li ng-repeat="hole in $ctrl.holes">
+      <button href="#trou{{hole.num}}" role="tab" id="trou{{hole.num}}-tab" data-toggle="tab" aria-controls="trou{{hole.num}}" aria-expanded="false">{{hole.num}}</button>
+    </li>
+    <li>
+      <button href="#total" role="tab" data-toggle="tab" aria-controls="total" aria-expanded="false">Total</button>
+    </li>
+  </ul>
+</div>
+-->
+
+<div class="tab-content">
+
+  <!-- Trous un par un -->
+  <div ng-repeat="hole in $ctrl.holes" role="tabpanel" class="tab-pane" ng-class="{active: hole.num==1}" id="trou{{hole.num}}">
+    <div class="page-header">
+      <h1 class="text-center">Trou n° {{hole.num}}</h1>
+      <div class="container">
+        <div class="infos row">
+          <div class="col-xs-6">
+            Par {{hole.par}}
+          </div>
+          <div class="col-xs-6 text-right">
+            Hcp {{hole.hcp}}
+          </div>
+          <div class="col-xs-6">
+            Départ {{$ctrl.tee.color}}
+          </div>
+          <div class="col-xs-6 text-right">
+            {{hole.coupsRendus}} coups rendus
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="text-center jumbotron">
+      <button class="btn btn-default" ng-click="$ctrl.removeStroke(hole.num)"><span class="glyphicon glyphicon-minus"></span></button>
+      <!--
+      <input type="number" ng-model="hole.score" ng-change="$ctrl.calculScore()" size=2 max=10 min=0 />
+      -->
+      <span class="jumbotron h1">{{hole.score}}</span>
+      <button class="btn btn-default" ng-click="$ctrl.addStroke(hole.num)"><span class="glyphicon glyphicon-plus"></span></button>
+    </div>
+    
+    <div class="text-center">
+      <!--
+      <button href="#trou{{hole.num-1}}" role="tab" data-toggle="tab" aria-controls="total" aria-expanded="false"> &lt; </button>
+      -->
+      <button class="btn btn-success" href="#trou{{hole.num-(-1)}}" ng-if="hole.num < $ctrl.holes.length" role="tab" data-toggle="tab" aria-controls="total" aria-expanded="false">Trou suivant <span class="glyphicon glyphicon-arrow-right"></span></button>
+      <button class="btn btn-success" href="#total" ng-if="hole.num == $ctrl.holes.length" role="tab" data-toggle="tab" aria-controls="total" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span> Carte de score</button>
+    </div>
+  </div>
+
+  <!-- Affichage Score Total -->
+  <div role="tabpanel" class="tab-pane" id="total">
+    
+    <div class="jumbotron text-center">
+      <p class="lead">Résultat</p>
+      
+      <h1><span ng-if="$ctrl.scoreStroke - $ctrl.parTotal > 0">+</span>{{$ctrl.scoreStroke - $ctrl.parTotal}}</h1>
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-4">
+            Strokes<br/>
+            <span class="label label-success" ng-if="$ctrl.scoreStroke - $ctrl.parTotal < 1">{{$ctrl.scoreStroke}}</span>
+            <span class="label label-warning" ng-if="$ctrl.scoreStroke - $ctrl.parTotal > 0">{{$ctrl.scoreStroke}}</span>
+          </div>
+          <div class="col-xs-4">
+            Stb Brut<br/>
+            <span class="label label-success" ng-if="$ctrl.scoreStbBrut > 36">{{$ctrl.scoreStbBrut}}</span>
+            <span class="label label-warning" ng-if="$ctrl.scoreStbBrut < 37">{{$ctrl.scoreStbBrut}}</span>
+          </div>
+          <div class="col-xs-4">
+            Stb Net<br/>
+            <span class="label label-success" ng-if="$ctrl.scoreStbNet > 36">{{$ctrl.scoreStbNet}}</span>
+            <span class="label label-warning" ng-if="$ctrl.scoreStbNet < 37">{{$ctrl.scoreStbNet}}</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div>Golf : {{$ctrl.golf.name}}</div>
+    <div>Parcours : {{$ctrl.parcours.name}}</div>
+    <div>Tee : {{$ctrl.tee.color}} - SSS : {{$ctrl.tee.sss}} - Slope : {{$ctrl.tee.slope}}</div>
+    <div>Index : {{$ctrl.index}}</div>
+    <div>Coups rendus : {{$ctrl.coupsRendus}}</div>
+    
+    <!-- Tableau desktop -->
+    <div class="table-responsive visible-md-block visible-lg-block">
+      <table class="table table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>Trou</th>
+            <th ng-repeat="hole in $ctrl.holes">
+              {{hole.num}}
+            </th>
+            <th>
+              TOTAL
+            </th>
+          </tr>
+          <tr>
+            <td>Par</td>
+            <td ng-repeat="hole in $ctrl.holes">
+              {{hole.par}}
+            </td>
+            <td>{{$ctrl.parTotal}}</td>
+          </tr>
+          <tr>
+            <td>Hcp</td>
+            <td ng-repeat="hole in $ctrl.holes">
+              {{hole.hcp}}
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>CR</td>
+            <td ng-repeat="hole in $ctrl.holes">
+              {{hole.coupsRendus}}
+            </td>
+            <td>{{$ctrl.coupsRendus}}</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Score</td>
+            <td ng-repeat="hole in $ctrl.holes">
+              <input type="number" ng-model="hole.score" ng-change="$ctrl.calculScore()" size=2 max=10 min=0 />
+            </td>
+            <td>
+            {{$ctrl.scoreStroke}}
+            </td>
+          </tr>
+          <tr>
+            <td>Stb Brut</td>
+            <td ng-repeat="hole in $ctrl.holes">
+              {{hole.scoreStbBrut}}
+            </td>
+            <td>{{$ctrl.scoreStbBrut}}</td>
+          </tr>
+          <tr>
+            <td>Stb Net</td>
+            <td ng-repeat="hole in $ctrl.holes">
+              {{hole.scoreStbNet}}
+            </td>
+            <td>{{$ctrl.scoreStbNet}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Tableau mobiles et tablettes -->
+    <div class="table-responsive hidden-md">
+      <table class="table table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>Trou</th>
+            <th>Par</th>
+            <th>Hcp</th>
+            <th>CR</th>
+            <th>Score</th>
+            <th>Brut</th>
+            <th>Net</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="hole in $ctrl.holes">
+            <td><strong>{{hole.num}}</strong></td>
+            <td>{{hole.par}}</td>
+            <td>{{hole.hcp}}</td>
+            <td>{{hole.coupsRendus}}</td>
+            <td>{{hole.score}}</td>
+            <td>{{hole.scoreStbBrut}}</td>
+            <td>{{hole.scoreStbNet}}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>TOTAL</th>
+            <th>{{$ctrl.parTotal}}</th>
+            <th>&nbsp;</th>
+            <th>{{$ctrl.coupsRendus}}</th>
+            <th>{{$ctrl.scoreStroke}}</th>
+            <th>{{$ctrl.scoreStbBrut}}</th>
+            <th>{{$ctrl.scoreStbNet}}</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <a class="btn btn-danger" href="/#!/"><span class="glyphicon glyphicon-home"></span> <span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+
+  </div>
+
+</div>
