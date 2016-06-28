@@ -1,6 +1,6 @@
 CACHE MANIFEST
  
-# Version 0.1.1
+# Version 0.1.2
  
 # index and templates
 index.html
@@ -8,14 +8,14 @@ prepare-game/prepare-game.tpl.html
 score-card/score-card.tpl.html
 
 # CSS
-bootstrap/dist/css/bootstrap.min.css
-bootstrap/dist/css/bootstrap-theme.min.css
+bower_components/bootstrap/dist/css/bootstrap.min.css
+bower_components/bootstrap/dist/css/bootstrap-theme.min.css
 app.css
 
 # JS
 bower_components/jquery/jquery.min.js
 bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js
-bootstrap/dist/js/bootstrap.min.js
+bower_components/bootstrap/dist/js/bootstrap.min.js
 bower_components/angular/angular.js
 bower_components/angular-route/angular-route.js
 app.module.js
