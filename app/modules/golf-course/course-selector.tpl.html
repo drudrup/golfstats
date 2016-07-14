@@ -5,22 +5,12 @@
     <div class="form-group" ng-class="{hidden: $ctrl.selectedGolfIndex != 0}">
       <label for="selectGolf">Select a golf</label><br/>
       <input class="form-control" type="text" id="selectGolf" >
-      <!-- <select class="form-control" id="selectGolf" ng-model="$ctrl.selectedGolfIndex" ng-change="$ctrl.loadGolfCourses($ctrl.selectedGolfIndex)">
-        <option ng-repeat="golf in $ctrl.golfClubs" value="{{golf.code}}">
-          {{golf.name}}
-        </option>
-      </select>-->
     </div>
     
     <div class="form-group" ng-class="{hidden: $ctrl.selectedGolfIndex == 0}">
       {{$ctrl.selectedGolfClub.name}} <em><a ng-click="$ctrl.resetSelectedGolfIndex()">edit</a></em><br/>
       <label for="selectGolf">Select a course</label><br/>
        <a class="btn btn-default" ng-class="{active: $ctrl.selectedCourse.code === course.code}" ng-repeat="course in $ctrl.golfCourses" ng-click="$ctrl.updateGolfCourseService(course.code)">{{course.name}}</a> 
-      <!-- <select class="form-control" id="selectGolf" ng-model="$ctrl.selectedCourse.code" ng-change="$ctrl.updateGolfCourseService()">
-        <option ng-repeat="course in $ctrl.golfCourses" value="{{course.code}}">
-          {{course.name}}
-        </option>
-      </select> -->
     </div>
     
   </form>

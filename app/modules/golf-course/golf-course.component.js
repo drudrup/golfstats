@@ -4,7 +4,22 @@ angular.
   component('golfCourse',{
     templateUrl: 'modules/golf-course/golf-course.tpl.html',
     controller: function GolfCourseController(GolfCourseService){
-      this.golf = GolfCourseService.golf;
+      var self = this;
+      
+      self.golfs = GolfCourseService.ready;
+      //console.log(self.golfs);
+      
+      self.askForGolfsList = function(){
+        if(!GolfCourseService.ready){
+          console.log(self.golfs);
+          setTimeout(self.askForGolfsList(),100);
+        }else{
+          console.log(self.golfs);
+          self.golfs = GolfCourseService.golfs;
+        }
+      }
+      self.askForGolfsList();
+      
       //this.golf = "hey";
     }
   });

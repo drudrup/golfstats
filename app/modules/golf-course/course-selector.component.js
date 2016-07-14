@@ -49,7 +49,7 @@ angular.
         console.log(parcours);
       }
       
-      // Rreset Selected Golf Index
+      // Reset Selected Golf Index
       self.resetSelectedGolfIndex = function(){
         self.selectedGolfIndex = 0;
       }
