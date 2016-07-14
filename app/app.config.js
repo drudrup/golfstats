@@ -8,7 +8,7 @@ angular.
         when('/', {
           //template: '<h1 class="text-center">Golf Scorer</h1><golf-course></golf-course>'
           //template: '<h1 class="text-center">Golf Scorer</h1><players-creation></players-creation>'
-          template: '<h1 class="text-center">Golf Scorer</h1><a href="/#!/golf" class="btn btn-success">Start</a>'
+          template: '<div class="text-center"><h1>Golf Scorer</h1><a href="/#!/golf" class="btn btn-success">Start</a></div>'
         }).
         when('/golf', {
           template: '<golf-course></golf-course>'
