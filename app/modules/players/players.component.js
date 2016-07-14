@@ -6,11 +6,10 @@ angular.
     controller: ['PlayersService', function PlayersCreationController(PlayersService){
       var self = this;
 
-      //self.players = [{id:0,name:"Player 1",index:54}];
       self.players = PlayersService.getPlayers();
 
       self.addPlayer = function(){
-        self.players.push({id:self.players.length,name:"Player "+(self.players.length+1),index:54});
+        self.players.push({id:self.players.length,name:"Player "+(self.players.length+1),index:54,tee:"red",sexe:"man"});
       }
 
       self.removePlayer = function(id){
