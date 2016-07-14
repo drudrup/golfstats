@@ -6,11 +6,31 @@ angular.
     controller: ['$http', 'GolfCourseService', function GolfCourseController($http, GolfCourseService){
       var self = this;
 
-      // Charger la liste des clubs de golf et la passer à GolfCourseService
-      $http.get('golfs/_golf-index.json').then(function(response) {
-        self.golfs = response.data;
-        self.golfsListReady = true; // just a flag to indicate that the list is loaded
+      self.golfs = GolfCourseService.getGolfsList();
+      self.golfClub = GolfCourseService.getGolf();
+      self.golfCourse = GolfCourseService.getCourse();
 
+
+      if(typeof self.golfs == "undefined"){
+        // Charger la liste des clubs de golf et la passer à GolfCourseService
+        $http.get('golfs/_golf-index.json').then(function(response) {
+          self.golfs = response.data;
+          GolfCourseService.setGolfsList(self.golfs);
+
+          self.golfsListReady = true; // just a flag to indicate that the list is loaded
+          var golfNames = new Array();
+          for(var i = 0; i <self.golfs.length; i++){
+            golfNames.push(self.golfs[i].name);
+          }
+          $("#searchGolf").autocomplete({
+            source: golfNames,
+            select: function(event, ui){
+              self.loadGolf(ui.item.label);
+            }
+          });
+        });
+      }else{
+        self.golfsListReady = true; // just a flag to indicate that the list is loaded
         var golfNames = new Array();
         for(var i = 0; i <self.golfs.length; i++){
           golfNames.push(self.golfs[i].name);
@@ -21,7 +41,7 @@ angular.
             self.loadGolf(ui.item.label);
           }
         });
-      });
+      }
 
       // Charger la fiche complète du golf club sélectionné
       // et la liste des parcours du club
@@ -34,7 +54,6 @@ angular.
         if(typeof selectedGolfClub != "undefined"){
           $http.get('golfs/'+selectedGolfClub.file).then(function(response) {
             self.golfClub = response.data;
-            //self.golfCourses = response.data.terrains;
           });
         }
 
@@ -46,8 +65,6 @@ angular.
         for(var i = 0; i<self.golfClub.terrains.length; i++){
           if(self.golfClub.terrains[i].code == courseCode) GolfCourseService.setCourse(self.golfClub.terrains[i]);
         }
-
-        console.log(GolfCourseService.getCourse());
       }
 
     }]

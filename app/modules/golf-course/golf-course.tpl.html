@@ -4,8 +4,12 @@
 
   <label for="searchGolf">Search a golf</label>
 
-  <input class="form-control" type="text" id="searchGolf" />
+  <input class="form-control" type="text" id="searchGolf" ng-model="$ctrl.golfClub.name"/>
 
-  <a ng-repeat="course in $ctrl.golfClub.terrains" class="btn btn-default" ng-click="$ctrl.submit(course.code)">{{course.name}}</a>
+  <a href="/#!/players"
+     class="btn btn-default"
+     ng-repeat="course in $ctrl.golfClub.terrains"
+     ng-class="{active: course.code == $ctrl.golfCourse.code}"
+     ng-click="$ctrl.submit(course.code)">{{course.name}}</a>
 
 </div>

@@ -7,9 +7,16 @@ angular.
       $routeProvider.
         when('/', {
           //template: '<h1 class="text-center">Golf Scorer</h1><golf-course></golf-course>'
-          template: '<h1 class="text-center">Golf Scorer</h1><players-creation></players-creation>'
+          //template: '<h1 class="text-center">Golf Scorer</h1><players-creation></players-creation>'
+          template: '<h1 class="text-center">Golf Scorer</h1><a href="/#!/golf" class="btn btn-success">Start</a>'
         }).
-        when('/card', {
+        when('/golf', {
+          template: '<golf-course></golf-course>'
+        }).
+        when('/players', {
+          template: '<players-creation></players-creation>'
+        }).
+        when('/scorecard', {
           template: '<score-card></score-card>'
         }).
         /*when('/phones/:phoneId', {

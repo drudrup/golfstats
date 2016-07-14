@@ -5,4 +5,5 @@ angular.module('golfStats', [
   'ngRoute',
   'golfCourse',
   'players',
+  'scoreCard',
 ]);

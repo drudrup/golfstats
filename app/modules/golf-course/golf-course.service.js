@@ -2,8 +2,16 @@ angular.
   module('golfCourse').
   factory('GolfCourseService', function(){
 
+    var golfsList;
+    function getGolfsList(){
+      return golfsList;
+    }
+    function setGolfsList(value){
+      golfsList = value;
+    }
+
     var golf;
-    function getGolf(value){
+    function getGolf(){
       return golf;
     }
     function setGolf(value){
@@ -11,7 +19,7 @@ angular.
     }
 
     var course;
-    function getCourse(value){
+    function getCourse(){
       return course;
     }
     function setCourse(value){
@@ -19,6 +27,8 @@ angular.
     }
 
     return {
+      getGolfsList: getGolfsList,
+      setGolfsList: setGolfsList,
       getGolf: getGolf,
       setGolf: setGolf,
       getCourse: getCourse,

@@ -1,7 +1,7 @@
 angular.
   module('players').
   factory('PlayersService', function(){
-    var players;
+    var players = [{id:0,name:"Player 1",index:54}];
     function setPlayers(value){
       players = value;
     }
