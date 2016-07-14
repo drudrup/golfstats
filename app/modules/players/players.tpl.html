@@ -1,0 +1,11 @@
+
+
+<div class="form-inline" ng-repeat="player in $ctrl.players">
+  <input type="text" class="form-control" ng-model="player.name" />
+  <input type="text" class="form-control" ng-model="player.index" />
+  <button class="btn btn-danger" ng-click="$ctrl.removePlayer(player.id)" ng-class="{hidden: $ctrl.players.length<2}"> X </button>
+</div>
+
+<button class="btn btn-default" ng-click="$ctrl.addPlayer()" ng-class="{hidden: $ctrl.players.length>3}">Add a player</button>
+
+<button class="btn btn-success" ng-click="$ctrl.updatePlayersService()">Start Game</button>

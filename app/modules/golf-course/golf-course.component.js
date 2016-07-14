@@ -53,6 +53,3 @@ angular.
     }]
   });
 
-function golfFind(golf){
-  return true;
-}
