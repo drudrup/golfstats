@@ -1,9 +1,11 @@
-hello
-<div ng-repeat="golf in $ctrl.golfs">
-{{golf.name}}
-</div>
+<div ng-class="{hidden: $ctrl.golfsListReady}">Loading...</div>
 
-<!--
-<golf-selector></golf-selector>
-<golf-course-selector></golf-course-selector>
--->
+<div ng-class="{hidden: !$ctrl.golfsListReady}">
+
+  <label for="searchGolf">Search a golf</label>
+
+  <input class="form-control" type="text" id="searchGolf" />
+
+  <a ng-repeat="course in $ctrl.golfClub.terrains" class="btn btn-default" ng-click="$ctrl.submit(course.code)">{{course.name}}</a>
+
+</div>

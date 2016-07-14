@@ -1,3 +1,3 @@
 
-// Declare 'userData' module
+// Declare 'golfCourse' module
 angular.module('golfCourse', []);

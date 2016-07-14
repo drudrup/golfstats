@@ -1,36 +1,28 @@
 angular.
   module('golfCourse').
-  factory('GolfCourseService', function($http){
+  factory('GolfCourseService', function(){
 
-    var name = "";
-    var code = 0;
-    var courses = new Array();
-    
-    
-    // Charger la liste des clubs de golf
-    var listeGolfs = new Array();
-    var listeGolfsReady = false;
-    $http.get('golfs/_golf-index.json').then(function(response) {
-      listeGolfs = response.data;
-      listeGolfsReady = true;
-    });
-    
-    function getGolfs(){
-      if(listeGolfsReady){
-        if(listeGolfs.length > 0){
-          return listeGolfs
-        }else{
-          return "No golf found";
-        }
-        
-      }else{
-        return "File not found";
-      }
+    var golf;
+    function getGolf(value){
+      return golf;
     }
-    
+    function setGolf(value){
+      golf = value;
+    }
+
+    var course;
+    function getCourse(value){
+      return course;
+    }
+    function setCourse(value){
+      course = value;
+    }
+
     return {
-      ready: listeGolfsReady,
-      golfs: getGolfs,
+      getGolf: getGolf,
+      setGolf: setGolf,
+      getCourse: getCourse,
+      setCourse: setCourse,
     };
 
 });
