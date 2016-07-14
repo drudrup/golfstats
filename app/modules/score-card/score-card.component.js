@@ -29,6 +29,12 @@ angular.
           }
         }
 
+        // Initiation de la carte du joueur
+        self.players[i].holes = new Array();
+        for (var j = 1 ; j <= self.course.holesCount ; j++){
+          self.players[i].holes.push({num: (j), par: self.course.tees[0].holes[j].par, hcp: self.course.tees[0].holes[j].hcp, score: 0, cr: 0});
+        }
+
         // Calcul des coups rendus : (Index x Slope)/113 + (SSS-Par)
         var index = self.players[i].index;
         var slope = self.players[i].slope;
@@ -46,18 +52,60 @@ angular.
         self.players[i].cr = Math.round( coupsRendus );
 
         // répartition des CR
-        /*for(var j = 0 ; j < self.course.tees.length ; j++){
+          /* tri par hcp */
+        self.players[i].holes.sort(function(a,b){
+          return parseFloat(a.hcp) - parseFloat(b.hcp);
+        });
+          /* ajout des CR */
+        for(var j = 0 ; j < self.players[i].cr ; j++){
+          self.players[i].holes[(j)%self.course.holesCount].cr++;
+        }
+          /* Tri par num pour réordonner les trous */
+        self.players[i].holes.sort(function(a,b){
+          return parseFloat(a.num) - parseFloat(b.num);
+        });
 
-        }*/
-
-        //console.log(self.course.holesCount);
-        console.log("index"+index);
-        console.log("slope"+slope);
-        console.log("sss"+sss);
-        console.log("par"+par);
 
       }
 
+      // Gestion du score
+      self.addStroke = function(player){
+        player.holes[self.currentHole-1].score++;
+        self.calculScore(player);
+      }
+      self.removeStroke = function(player){
+        if(player.holes[self.currentHole-1].score>0) player.holes[self.currentHole-1].score--;
+        self.calculScore(player);
+      }
+      self.calculScore = function(player){
+          var pid = player.id;
+          self.players[pid].scoreStroke = 0;
+          self.players[pid].scoreStbBrut = 0;
+          self.players[pid].scoreStbNet = 0;
+
+          for(var j = 0; j < player.holes.length; j++){
+            if(self.players[pid].holes[j].score > 0){
+              self.players[pid].scoreStroke  += self.players[pid].holes[j].score;
+              self.players[pid].scoreStbBrut += ((self.players[pid].holes[j].score - self.players[pid].holes[j].par - 2) < 0) ? -(self.players[pid].holes[j].score - self.players[pid].holes[j].par - 2) : 0;
+              self.players[pid].scoreStbNet  += ((self.players[pid].holes[j].score - self.players[pid].holes[j].cr - self.players[pid].holes[j].par - 2) < 0) ? -(self.players[pid].holes[j].score - self.players[pid].holes[j].cr - self.players[pid].holes[j].par - 2) : 0;
+            }
+          }
+        };
+
+      // Affichage trou par trou
+      self.currentHole = 1;
+      self.nextHole = function(){
+        if(self.currentHole < self.course.holesCount) self.currentHole++;
+      }
+      self.prevHole = function(){
+        if(self.currentHole > 1) self.currentHole--;
+      }
+
+      // Toggle Trou par trou/Total
+      self.showTotal = false;
+      self.toggleTotal = function(){
+        self.showTotal = !self.showTotal;
+      }
     }]
   });
 
