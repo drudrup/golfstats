@@ -1,16 +1,23 @@
-<h1 ng-if="!$ctrl.golfsListReady">Loading...</h1>
+<div class="text-center">
 
-<div ng-class="{hidden: !$ctrl.golfsListReady}" class="text-center">
+  <div class="page-header">
+    <h1>Search for a golf</h1>
+  </div>
 
-  <h1>Search for a golf</h1>
+  <div class="alert alert-info text-center" role="alert" ng-if="!$ctrl.golfsListReady">
+  A moment, please,<br/>golfs list is being loaded...
+  </div>
 
-  <input class="form-control" type="text" id="searchGolf" ng-model="$ctrl.golfClub.name"/>
-  <br/>
+  <div class="form-group" ng-class="{hidden: !$ctrl.golfsListReady}">
+    <input class="form-control" type="text" id="searchGolf" ng-model="$ctrl.golfClub.name" placeholder="Enter golf name"/>
+  </div>
 
   <a href="/#!/players"
-     class="btn btn-primary btn-block"
+     class="btn btn-success btn-block"
      ng-repeat="course in $ctrl.golfClub.terrains"
      ng-class="{active: course.code == $ctrl.golfCourse.code}"
-     ng-click="$ctrl.submit(course.code)">{{course.name}}</a>
+     ng-click="$ctrl.submit(course.code)">
+      {{course.name}} <span class="glyphicon glyphicon-ok" ng-if="course.code == $ctrl.golfCourse.code" aria-hidden="true"></span>
+  </a>
 
 </div>
