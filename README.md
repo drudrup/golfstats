@@ -3,7 +3,7 @@
 Programme de calcul de score
 
 ## TODO (v1):
-* bloquer le zoom
+* ~~bloquer le zoom~~
 * meilleure intégration en tant qu'app
 * ~~intégration de la liste des golfs français~~ intégrer une API externe
 * ~~ajout bouton "trou précédent"~~
