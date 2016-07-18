@@ -5,11 +5,12 @@ angular.
     templateUrl: 'modules/players/players.tpl.html',
     controller: ['PlayersService', function PlayersCreationController(PlayersService){
       var self = this;
+      var idxCounter = 0; // Counter to create index for players array
 
       self.players = PlayersService.getPlayers();
 
       self.addPlayer = function(){
-        self.players.push({id:self.players.length,name:"Player "+(self.players.length+1),index:54,tee:"red",sexe:"man"});
+        self.players.push({id:idxCounter++,name:"Player "+(idxCounter+1),index:54,tee:"red",sexe:"man"});
       }
 
       self.removePlayer = function(id){

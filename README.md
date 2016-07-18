@@ -12,7 +12,7 @@ Programme de calcul de score
 * validation des champs en entrées
 * mise en place des tests automatisés
 * ~~vérifier calcul des coups rendus et calcul stableford~~
-* ~~version multi-joueur~~ reste un bug à la suppression d'un joueur
+* ~~version multi-joueur~~
 
 ## TODO (v2):
 * sauvegarde locale/externe/cloud des données
