@@ -1,0 +1,75 @@
+<!--
+<div>
+Golf: {{$ctrl.golf.name}}<br/>
+Parcours: {{$ctrl.course.name}}
+</div>
+-->
+<div ng-if="!$ctrl.showTotal" class="text-center">
+  <div class="page-header">
+    <h2>Trou n°{{$ctrl.currentHole}}</h2>
+    <div>Par {{$ctrl.course.tees[0].holes[$ctrl.currentHole].par}} - Hcp {{$ctrl.course.tees[0].holes[$ctrl.currentHole].hcp}}</div>
+  </div>
+
+  <div ng-repeat="player in $ctrl.players" class="form-inline well well-sm">
+    {{player.name}}<br/>
+
+    <button class="btn btn-default" ng-click="$ctrl.removeStroke(player)">-</button>
+    <strong class="h1">{{player.holes[$ctrl.currentHole-1].score}}</strong>
+    <button class="btn btn-default" ng-click="$ctrl.addStroke(player)">+</button>
+
+  </div>
+
+  <div class="clearfix">
+    <button class="btn btn-default pull-left" ng-click="$ctrl.prevHole()" ng-if="$ctrl.currentHole > 1">Prev hole</button>
+    <button class="btn btn-success pull-right" ng-click="$ctrl.nextHole()" ng-if="$ctrl.currentHole < $ctrl.course.holesCount">Next hole</button>
+    <button class="btn btn-danger pull-right" ng-click="$ctrl.toggleTotal()" ng-if="$ctrl.currentHole == $ctrl.course.holesCount">Total</button>
+  </div>
+
+</div>
+
+<div ng-if="$ctrl.showTotal">
+  <div class="page-header text-center">
+    <h2>Total</h2>
+  </div>
+
+  <div ng-repeat="player in $ctrl.players" class="panel panel-default">
+    <div class="panel-heading"><strong>{{player.name}}</strong><br/>Stroke: {{player.scoreStroke}} - Stb Brut: {{player.scoreStbBrut}} - Stb Net: {{player.scoreStbNet}}</div>
+
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-condensed text-center">
+        <tr>
+          <!--<th>#</th>-->
+          <th ng-repeat="hole in player.holes">
+            {{hole.num}}
+          </th>
+        </tr>
+        <!--
+        <tr>
+          <th>HCP</th>
+          <td ng-repeat="hole in player.holes">
+            {{hole.hcp}}
+          </td>
+        </tr>
+        <tr>
+          <th>CR</th>
+          <td ng-repeat="hole in player.holes">
+            {{hole.cr}}
+          </td>
+        </tr>
+        -->
+        <tr>
+          <!--<th>Score</th>-->
+          <td ng-repeat="hole in player.holes">
+            {{hole.score}}
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+  <button class="btn btn-default" ng-click="$ctrl.toggleTotal()">Back</button>
+
+  <a href="/#!/" class="btn btn-primary pull-right">Homepage</a>
+
+</div>

@@ -3,7 +3,8 @@
 // Declare app level module which depends on views, and components
 angular.module('golfStats', [
   'ngRoute',
-  // 'userData',
-  'prepareGame',
-  'scoreCard'
+  'templates',
+  'golfCourse',
+  'players',
+  'scoreCard',
 ]);
