@@ -17,6 +17,9 @@ gulp.task('less', function () {
 
 // JS
 var JSarray = [
+  "./app/bower_components/jquery/jquery.min.js",
+  "./app/bower_components/jquery-ui/jquery-ui.min.js",
+  "./app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js",
   "./app/bower_components/bootstrap/dist/js/bootstrap.min.js",
   "./app/bower_components/angular/angular.js",
   "./app/bower_components/angular-route/angular-route.js",

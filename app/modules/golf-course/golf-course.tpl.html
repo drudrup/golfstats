@@ -17,7 +17,7 @@
      ng-repeat="course in $ctrl.golfClub.terrains"
      ng-class="{active: course.code == $ctrl.golfCourse.code}"
      ng-click="$ctrl.submit(course.code)">
-      {{course.name}} <span class="glyphicon glyphicon-ok" ng-if="course.code == $ctrl.golfCourse.code" aria-hidden="true"></span>
+      {{course.name}}
   </a>
 
 </div>

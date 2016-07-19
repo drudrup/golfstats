@@ -1,7 +1,6 @@
 // Register the 'golfCourse' component on the 'golfCourse' module,
 
 var APIurl = "http://api.f-log.leoggo.com/";
-var APIkey = "MyValuable-API-Key";
 
 angular.
   module('golfCourse').
@@ -18,7 +17,7 @@ angular.
 
       if(typeof self.golfs == "undefined"){
         // Charger la liste des clubs de golf et la passer à GolfCourseService
-        $http.get(APIurl+'idx/'+APIkey).then(function(response) {
+        $http.get(APIurl).then(function(response) {
           self.golfs = response.data;
           GolfCourseService.setGolfsList(self.golfs);
 
@@ -57,7 +56,7 @@ angular.
         }
 
         if(typeof selectedGolfClub != "undefined"){
-          $http.get(APIurl+selectedGolfClub.code+'/'+APIkey).then(function(response) {
+          $http.get(APIurl+selectedGolfClub.code).then(function(response) {
             self.golfClub = response.data;
           });
         }
