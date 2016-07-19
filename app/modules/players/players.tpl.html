@@ -12,10 +12,14 @@
     <option value="blue">Blue</option>
     <option value="red">Red</option>
   </select>
-  <select ng-model="player.sexe" class="form-control">
+  <!--<select ng-model="player.sexe" class="form-control">
     <option value="man">Man</option>
     <option value="woman">Woman</option>
-  </select>
+  </select>-->
+  <div class="form-group" id="gender-selector">
+    <input type="radio" ng-name="gender+$player.id" value="man" ng-model="player.gender" />
+    <input type="radio" ng-name="gender+$player.id" value="woman" ng-model="player.gender" />
+  </div>
   <button class="btn btn-danger" ng-click="$ctrl.removePlayer(player.id)" ng-class="{hidden: $ctrl.players.length<2}"> X </button>
 </div>
 

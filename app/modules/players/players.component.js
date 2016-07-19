@@ -6,11 +6,14 @@ angular.
     controller: ['PlayersService', function PlayersCreationController(PlayersService){
       var self = this;
       var idxCounter = 0; // Counter to create index for players array
-
+      
+      
       self.players = PlayersService.getPlayers();
-
+      
       self.addPlayer = function(){
-        self.players.push({id:idxCounter++,name:"Player "+(idxCounter+1),index:54,tee:"red",sexe:"man"});
+        self.players.push({id:idxCounter++,name:"Player "+(idxCounter+1),index:54,tee:"red",gender:"man"});
+        $('input[type=radio]').bootstrapSwitch();
+
       }
 
       self.removePlayer = function(id){
