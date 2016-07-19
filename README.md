@@ -9,6 +9,7 @@ Programme de calcul de score
 * ~~choix du sexe au début de partie~~
 * ~~vérifier calcul des coups rendus et calcul stableford~~
 * ~~version multi-joueur~~
+* ~~minification JS, CSS et TPL.HTML~~
 * meilleure intégration en tant qu'app
 * meilleur affichage des résultats
 * meilleur affichage à chaque trou
