@@ -3,6 +3,7 @@ var concat = require('gulp-concat');
 var less = require('gulp-less');
 var path = require('path');
 var uglify = require('gulp-uglify');
+var templateCache = require('gulp-angular-templatecache');
 
 gulp.task('default', ['less','js','watch']);
 
@@ -25,6 +26,7 @@ var JSarray = [
   "./app/modules/*/*.module.js",
   "./app/modules/*/*.component.js",
   "./app/modules/*/*.service.js",
+  "./app/modules/templates.js",
   "./app/components/version/version.js",
   "./app/components/version/version-directive.js",
   "./app/components/version/interpolate-filter.js"
@@ -36,9 +38,16 @@ gulp.task('js', function(){
              .pipe(gulp.dest("./app/dist/"));
 });
 
+// HTML templates
+gulp.task('tpl', function(){
+  return gulp.src('./app/modules/*/*.tpl.html')
+             .pipe(templateCache({'standalone':true}))
+             .pipe(gulp.dest("./app/modules/"));
+});
 
 // Watch
 gulp.task('watch', function () {
+	gulp.watch(['./app/modules/*/*.tpl.html'], ['tpl','js']);
 	gulp.watch(['./app/modules/*/*.js'], ['js']);
 	gulp.watch(['./app/less/*.less'], ['less']);
 });

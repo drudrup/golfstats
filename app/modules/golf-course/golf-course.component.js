@@ -6,7 +6,8 @@ var APIkey = "MyValuable-API-Key";
 angular.
   module('golfCourse').
   component('golfCourse',{
-    templateUrl: 'modules/golf-course/golf-course.tpl.html',
+    templateUrl: 'golf-course/golf-course.tpl.html',
+    //template: $templateCache.get('golf-course/golf-course.tpl.html'),
     controller: ['$http', 'GolfCourseService', function GolfCourseController($http, GolfCourseService){
       var self = this;
 

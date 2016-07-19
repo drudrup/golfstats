@@ -2,7 +2,7 @@
 angular.
   module('players').
   component('playersCreation',{
-    templateUrl: 'modules/players/players.tpl.html',
+    templateUrl: 'players/players.tpl.html',
     controller: ['PlayersService', function PlayersCreationController(PlayersService){
       var self = this;
       var idxCounter = 0; // Counter to create index for players array

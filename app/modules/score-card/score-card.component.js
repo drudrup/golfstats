@@ -2,7 +2,7 @@
 angular.
   module('scoreCard').
   component('scoreCard',{
-    templateUrl: 'modules/score-card/score-card.tpl.html',
+    templateUrl: 'score-card/score-card.tpl.html',
     controller: ['PlayersService', 'GolfCourseService', function GolfCourseController(PlayersService, GolfCourseService){
       var self = this;
 
