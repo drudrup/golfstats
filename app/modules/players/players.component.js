@@ -11,7 +11,7 @@ angular.
       self.players = PlayersService.getPlayers();
       
       self.addPlayer = function(){
-        self.players.push({id:idxCounter++,name:"Player "+(idxCounter+1),index:54,tee:"red",gender:"man"});
+        self.players.push({id:idxCounter++,name:"Player "+(idxCounter+1),index:54,tee:"yellow",gender:"man"});
       }
 
       self.removePlayer = function(id){
