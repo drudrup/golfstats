@@ -12,8 +12,6 @@ angular.
       
       self.addPlayer = function(){
         self.players.push({id:idxCounter++,name:"Player "+(idxCounter+1),index:54,tee:"red",gender:"man"});
-        $('input[type=radio]').bootstrapSwitch();
-
       }
 
       self.removePlayer = function(id){

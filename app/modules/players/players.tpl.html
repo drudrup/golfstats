@@ -2,25 +2,52 @@
   <h1>Add players</h1>
 </div>
 
-<div class="form-inline well well-sm" ng-repeat="player in $ctrl.players">
-  <input type="text" class="form-control" ng-model="player.name" placeholder="Nom du joueur"/>
-  <input type="number" class="form-control" ng-model="player.index" placeholder="Index" min="0" max="54"/>
-  <select ng-model="player.tee" class="form-control">
-    <option value="black">Black</option>
-    <option value="white">White</option>
-    <option value="yellow">Yellow</option>
-    <option value="blue">Blue</option>
-    <option value="red">Red</option>
-  </select>
-  <!--<select ng-model="player.sexe" class="form-control">
-    <option value="man">Man</option>
-    <option value="woman">Woman</option> 
-  </select>-->
-  <div class="form-group" id="gender-selector">
-    <input type="radio" ng-name="gender+$player.id" value="man" ng-model="player.gender" />
-    <input type="radio" ng-name="gender+$player.id" value="woman" ng-model="player.gender" />
+<div class="form-inline well well-sm text-center" ng-repeat="player in $ctrl.players">
+  <div class="form-group">
+    <input type="text" class="form-control" ng-model="player.name" placeholder="Nom du joueur"/>
   </div>
-  <button class="btn btn-danger" ng-click="$ctrl.removePlayer(player.id)" ng-class="{hidden: $ctrl.players.length<2}"> X </button>
+  
+  <div class="form-group">
+    <input type="number" class="form-control" ng-model="player.index" placeholder="Index" min="0" max="54"/>
+  </div>
+  
+  <div class="form-group">
+    <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-default teeBlack" ng-class="{active: player.tee == 'black'}">
+        <input type="radio" ng-name="tee+$player.id" value="black" ng-model="player.tee">&nbsp;
+      </label>
+      <label class="btn btn-default teeWhite" ng-class="{active: player.tee == 'white'}">
+        <input type="radio" ng-name="tee+$player.id" value="white" ng-model="player.tee">&nbsp;
+      </label>
+      <label class="btn btn-default teeYellow" ng-class="{active: player.tee == 'yellow'}">
+        <input type="radio" ng-name="tee+$player.id" value="yellow" ng-model="player.tee">&nbsp;
+      </label>
+      <label class="btn btn-default teeBlue" ng-class="{active: player.tee == 'blue'}">
+        <input type="radio" ng-name="tee+$player.id" value="blue" ng-model="player.tee">&nbsp;
+      </label>
+      <label class="btn btn-default teeRed" ng-class="{active: player.tee == 'red'}">
+        <input type="radio" ng-name="tee+$player.id" value="red" ng-model="player.tee">&nbsp;
+      </label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-primary" ng-class="{active: player.gender == 'man'}">
+        <input type="radio" ng-name="gender+$player.id" value="man" ng-model="player.gender"> ♂
+      </label>
+      <label class="btn btn-primary" ng-class="{active: player.gender == 'woman'}">
+        <input type="radio" ng-name="gender+$player.id" value="woman" ng-model="player.gender"> ♀
+      </label>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="btn-group">
+      <button class="btn btn-danger" ng-click="$ctrl.removePlayer(player.id)" ng-class="{hidden: $ctrl.players.length<2}"> X </button>
+    </div>
+  </div>
+  
 </div>
 
 <button class="btn btn-default btn-block" ng-click="$ctrl.addPlayer()" ng-class="{hidden: $ctrl.players.length>3}">Add a player</button>

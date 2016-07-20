@@ -9691,3 +9691,21 @@ a.ui-button:active,
   -webkit-box-shadow: 0px 0px 5px #666666;
   box-shadow: 0px 0px 5px #666666;
 }
+/*
+ * App theme
+ */
+.teeRed {
+  background: #ff0000;
+}
+.teeBlue {
+  background: #1800ff;
+}
+.teeYellow {
+  background: #fff000;
+}
+.teeWhite {
+  background: #fff;
+}
+.teeBlack {
+  background: #000;
+}
