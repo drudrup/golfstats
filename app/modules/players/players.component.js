@@ -22,13 +22,11 @@ angular.
       self.updateGender = function(id,gender){
         var index = self.players.map(function(e) { return e.id; }).indexOf(id);
         self.players[index].gender = gender;
-        console.log(id+" - "+index+" - "+gender);
       }
 
       self.updateTee = function(id,teeColor){
         var index = self.players.map(function(e) { return e.id; }).indexOf(id);
         self.players[index].tee = teeColor;
-        console.log(id+" - "+index+" - "+teeColor);
       }
 
       self.updatePlayersService = function(){
