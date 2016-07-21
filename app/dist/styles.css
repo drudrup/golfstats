@@ -9770,3 +9770,32 @@ a.ui-button:active,
 .player-add-player-form .form-group.player-tee label.teeBlack.active {
   background: #000;
 }
+.score-card-hole .pull-left {
+  margin-top: -4px;
+}
+.score-card-hole .tee-color {
+  display: inline-block;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 1.3rem;
+  vertical-align: middle;
+}
+.score-card-hole .tee-color.black {
+  background: #000;
+}
+.score-card-hole .tee-color.white {
+  background: #fff;
+}
+.score-card-hole .tee-color.yellow {
+  background: #fff000;
+}
+.score-card-hole .tee-color.blue {
+  background: #1800ff;
+}
+.score-card-hole .tee-color.red {
+  background: #ff0000;
+}
+.score-card-hole .btn,
+.score-card-hole .h1 {
+  vertical-align: middle;
+}
