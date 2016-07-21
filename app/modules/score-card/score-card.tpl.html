@@ -6,13 +6,22 @@ Parcours: {{$ctrl.course.name}}
 -->
 <div ng-if="!$ctrl.showTotal" class="text-center">
   <div class="page-header">
-    <h2>Trou n°{{$ctrl.currentHole}}</h2>
-    <div>Par {{$ctrl.course.tees[0].holes[$ctrl.currentHole].par}} - Hcp {{$ctrl.course.tees[0].holes[$ctrl.currentHole].hcp}}</div>
+    <h2>Hole {{$ctrl.currentHole}}<br/><small>Par {{$ctrl.course.tees[0].holes[$ctrl.currentHole].par}} - Hcp {{$ctrl.course.tees[0].holes[$ctrl.currentHole].hcp}}</small></h2> 
   </div>
 
   <div ng-repeat="player in $ctrl.players" class="form-inline well well-sm">
     {{player.name}}<br/>
+    CR: {{player.holes[$ctrl.currentHole-1].cr}}<br/>
+    Tee: {{player.tee}}<br/>
+    Gender: {{player.gender}}<br/>
 
+    <span ng-if="player.tee == 'red'">{{$ctrl.course.tees[0].holes[$ctrl.currentHole].distance}}</span>
+    <span ng-if="player.tee == 'blue'">{{$ctrl.course.tees[1].holes[$ctrl.currentHole].distance}}</span>
+    <span ng-if="player.tee == 'yellow'">{{$ctrl.course.tees[2].holes[$ctrl.currentHole].distance}}</span>
+    <span ng-if="player.tee == 'white'">{{$ctrl.course.tees[3].holes[$ctrl.currentHole].distance}}</span>
+    <span ng-if="player.tee == 'black'">{{$ctrl.course.tees[4].holes[$ctrl.currentHole].distance}}</span>
+    m<br/>
+    
     <button class="btn btn-default" ng-click="$ctrl.removeStroke(player)">-</button>
     <strong class="h1">{{player.holes[$ctrl.currentHole-1].score}}</strong>
     <button class="btn btn-default" ng-click="$ctrl.addStroke(player)">+</button>

@@ -5,7 +5,7 @@ angular.
     templateUrl: 'players/players.tpl.html',
     controller: ['PlayersService', function PlayersCreationController(PlayersService){
       var self = this;
-      var idxCounter = 0; // Counter to create index for players array
+      var idxCounter = 1; // Counter to create index for players array
       
       
       self.players = PlayersService.getPlayers();
@@ -17,6 +17,18 @@ angular.
       self.removePlayer = function(id){
         var index = self.players.map(function(e) { return e.id; }).indexOf(id);
         self.players.splice(index,1);
+      }
+      
+      self.updateGender = function(id,gender){
+        var index = self.players.map(function(e) { return e.id; }).indexOf(id);
+        self.players[index].gender = gender;
+        console.log(id+" - "+index+" - "+gender);
+      }
+
+      self.updateTee = function(id,teeColor){
+        var index = self.players.map(function(e) { return e.id; }).indexOf(id);
+        self.players[index].tee = teeColor;
+        console.log(id+" - "+index+" - "+teeColor);
       }
 
       self.updatePlayersService = function(){

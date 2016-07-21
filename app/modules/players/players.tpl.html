@@ -13,30 +13,30 @@
   
   <div class="form-group player-gender">
     <div class="btn-group" data-toggle="buttons">
-      <label class="btn btn-default man" ng-class="{active: player.gender == 'man'}">
-        <input type="radio" ng-name="gender+$player.id" value="man" ng-model="player.gender"> ♂
+      <label class="btn btn-default man" ng-class="{active: player.gender == 'man'}" ng-click="$ctrl.updateGender(player.id,'man')">
+        <input type="radio" ng-name="'gender'+player.id" value="man" ng-model="player.gender"> ♂
       </label>
-      <label class="btn btn-default woman" ng-class="{active: player.gender == 'woman'}">
-        <input type="radio" ng-name="gender+$player.id" value="woman" ng-model="player.gender"> ♀
+      <label class="btn btn-default woman" ng-class="{active: player.gender == 'woman'}" ng-click="$ctrl.updateGender(player.id,'woman')">
+        <input type="radio" ng-name="'gender'+player.id" value="woman" ng-model="player.gender"> ♀
       </label>
     </div>
   </div>
   
   <div class="form-group player-tee">
     <div class="btn-group" data-toggle="buttons">
-      <label class="btn teeBlack" ng-class="{active: player.tee == 'black'}">
+      <label class="btn teeBlack" ng-class="{active: player.tee == 'black'}" ng-click="$ctrl.updateTee(player.id,'black')">
         <input type="radio" ng-name="tee+$player.id" value="black" ng-model="player.tee">&nbsp;
       </label>
-      <label class="btn teeWhite" ng-class="{active: player.tee == 'white'}">
+      <label class="btn teeWhite" ng-class="{active: player.tee == 'white'}" ng-click="$ctrl.updateTee(player.id,'white')">
         <input type="radio" ng-name="tee+$player.id" value="white" ng-model="player.tee">&nbsp;
       </label>
-      <label class="btn teeYellow" ng-class="{active: player.tee == 'yellow'}">
+      <label class="btn teeYellow" ng-class="{active: player.tee == 'yellow'}" ng-click="$ctrl.updateTee(player.id,'yellow')">
         <input type="radio" ng-name="tee+$player.id" value="yellow" ng-model="player.tee">&nbsp;
       </label>
-      <label class="btn teeBlue" ng-class="{active: player.tee == 'blue'}">
+      <label class="btn teeBlue" ng-class="{active: player.tee == 'blue'}" ng-click="$ctrl.updateTee(player.id,'blue')">
         <input type="radio" ng-name="tee+$player.id" value="blue" ng-model="player.tee">&nbsp;
       </label>
-      <label class="btn teeRed" ng-class="{active: player.tee == 'red'}">
+      <label class="btn teeRed" ng-class="{active: player.tee == 'red'}" ng-click="$ctrl.updateTee(player.id,'red')">
         <input type="radio" ng-name="tee+$player.id" value="red" ng-model="player.tee">&nbsp;
       </label>
     </div>
