@@ -12,10 +12,12 @@ Programme de calcul de score
 * ~~minification JS, CSS et TPL.HTML~~
 * meilleure intégration en tant qu'app
 * meilleur affichage des résultats
-* meilleur affichage à chaque trou
-* meilleur affichage du choix des joueurs
+* ~~meilleur affichage à chaque trou~~
+* ~~meilleur affichage du choix des joueurs~~
 * validation des champs en entrées
 * mise en place des tests automatisés
+* sauvegarder localement les golfs déjà chargés et l'index des golfs
+* sauvegardes des cartes de score
 
 ## TODO (v2):
 * sauvegarde locale/externe/cloud des données
