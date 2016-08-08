@@ -1,0 +1,78 @@
+
+//* "Add Players" page */
+.player-add-player-form{
+  overflow: hidden;
+  padding: 1rem 1rem 0;
+  margin: 0 auto 1rem;
+  
+  .form-group{
+    margin: 0 0 1rem;
+    
+    &.player-name{
+      float: left;
+      width: 47.5%;
+      margin-right: 3.5%;
+    }
+
+    &.player-index{
+      float: left;
+      width: 20.5%;
+      margin-right: 3.5%;
+    }
+
+    &.player-gender{
+      float: left;
+      width: 25%;
+      
+      label{
+        padding: 0 .25rem;
+        font-size: 3.6rem;
+        line-height: 3rem;
+        margin-top: .1rem;
+        
+        &.active{
+          &.man{color: @teeBlue;}
+          &.woman{color: @teeRed;}
+        }
+      }
+    }
+
+    &.player-tee{
+      float: left;
+      
+      label{
+        width: 3rem;
+        height: 3rem;
+        border-radius: 1.5rem !important;
+        padding: 0;
+        margin: 2px 3px;
+        border: .35rem solid;
+        background: #eee;
+        
+        &.teeRed{
+          border-color: @teeRed;
+          &.active{background: @teeRed;}
+        }
+        &.teeBlue{
+          border-color: @teeBlue;
+          &.active{background: @teeBlue;}
+        }
+        &.teeYellow{
+          border-color: @teeYellow;
+          &.active{background: @teeYellow;}
+        }
+        &.teeWhite{
+          border-color: @teeWhite;
+          &.active{background: @teeWhite;}
+        }
+        &.teeBlack{
+          border-color: @teeBlack;
+          &.active{background: @teeBlack;}
+        }
+      }
+    }
+  }
+  
+}
+
+
