@@ -1,11 +1,11 @@
 CACHE MANIFEST
-# v0.1.14
+# v0.1.26
  
 CACHE:
 index.html
 dist/styles.css
 dist/scripts.js
-http://api.f-log.leoggo.com/
+#http://api.f-log.leoggo.com/
 
 NETWORK:
 *
