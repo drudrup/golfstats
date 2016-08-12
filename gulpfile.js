@@ -5,7 +5,7 @@ var path = require('path');
 var uglify = require('gulp-uglify');
 var templateCache = require('gulp-angular-templatecache');
 
-gulp.task('default', ['less','js','watch']);
+gulp.task('default', ['less','tpl','js','watch']);
 
 // LESS
 gulp.task('less', function () {

@@ -13,7 +13,14 @@ angular.
       self.golfs = GolfCourseService.getGolfsList();
       self.golfClub = GolfCourseService.getGolf();
       self.golfCourse = GolfCourseService.getCourse();
+      self.golfsInLocalStorage = GolfCourseService.getGolfsInLocalStorage();
+      
+      self.golfsILScount = (self.golfsInLocalStorage!=null) ? Object.keys(self.golfsInLocalStorage).length : 0;
 
+
+	  self.setGolfClub = function(golf){
+		self.golfClub = golf;
+	  }
 
       if(typeof self.golfs == "undefined"){
         // Charger la liste des clubs de golf et la passer à GolfCourseService
@@ -62,7 +69,8 @@ angular.
         }
 
       };
-
+      
+      
       // Update GolfCourseService with selected Golf Club and Course
       self.submit = function(courseCode){
         GolfCourseService.setGolf(self.golfClub);

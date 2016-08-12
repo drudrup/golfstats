@@ -32,7 +32,7 @@ angular.
         // Initiation de la carte du joueur
         self.players[i].holes = new Array();
         for (var j = 1 ; j <= self.course.holesCount ; j++){
-          self.players[i].holes.push({num: (j), par: self.course.tees[0].holes[j].par, hcp: self.course.tees[0].holes[j].hcp, score: 0, cr: 0});
+          self.players[i].holes.push({num: (j), par: self.course.tees[0].holes[j].par, hcp: self.course.tees[0].holes[j].hcp, distance: self.course.tees[0].holes[j].distance, score: 0, cr: 0});
         }
 
         // Calcul des coups rendus : (Index x Slope)/113 + (SSS-Par)

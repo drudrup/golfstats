@@ -16,6 +16,7 @@ angular.
     }
     function setGolf(value){
       golf = value;
+      addGolfToLocalStorage(golf);
     }
 
     var course;
@@ -35,6 +36,16 @@ angular.
       }
       course.par = par;
     }
+    
+    function getGolfsInLocalStorage(){
+      return JSON.parse(localStorage.getItem('golfs'));
+    }
+    function addGolfToLocalStorage(golf){
+      var golfsInLocalStorage = JSON.parse(localStorage.getItem('golfs'));
+      if(golfsInLocalStorage == null) golfsInLocalStorage = {};
+      golfsInLocalStorage[golf.code] = golf;
+      localStorage.setItem('golfs',JSON.stringify(golfsInLocalStorage));      
+    }
 
     return {
       getGolfsList: getGolfsList,
@@ -43,6 +54,7 @@ angular.
       setGolf: setGolf,
       getCourse: getCourse,
       setCourse: setCourse,
+      getGolfsInLocalStorage: getGolfsInLocalStorage,
     };
 
 });
