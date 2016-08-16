@@ -4,6 +4,8 @@ Golf: {{$ctrl.golf.name}}<br/>
 Parcours: {{$ctrl.course.name}}
 </div>
 -->
+
+<!-- Trou par trou -->
 <div ng-if="!$ctrl.showTotal">
   <div class="page-header text-right">
     <h2><span class="pull-left">Hole {{$ctrl.currentHole}}</span><small>Par {{$ctrl.course.tees[0].holes[$ctrl.currentHole].par}}<br/>Hcp {{$ctrl.course.tees[0].holes[$ctrl.currentHole].hcp}}</small></h2> 
@@ -26,9 +28,13 @@ Parcours: {{$ctrl.course.name}}
       <span class="badge" ng-if="player.holes[$ctrl.currentHole-1].cr > 0">+{{player.holes[$ctrl.currentHole-1].cr}}</span>
     </div>
     
-    <button class="btn btn-default" ng-click="$ctrl.removeStroke(player)">-</button>
+    <div slider ng-model="player.holes[$ctrl.currentHole-1].score"></div>
+    <div slider ng-model="player.holes[$ctrl.currentHole-1].putts" ng-if="player.logPutts"></div>
+    
+    <!-- <button class="btn btn-default" ng-click="$ctrl.removeStroke(player)">-</button> -->
     <strong class="h1">{{player.holes[$ctrl.currentHole-1].score}}</strong>
-    <button class="btn btn-default" ng-click="$ctrl.addStroke(player)">+</button>
+    <span class="badge" ng-if="player.logPutts">{{player.holes[$ctrl.currentHole-1].putts}}</span>
+    <!-- <button class="btn btn-default" ng-click="$ctrl.addStroke(player)">+</button> -->
 
   </div>
 
@@ -40,6 +46,8 @@ Parcours: {{$ctrl.course.name}}
 
 </div>
 
+
+<!-- TOTAL -->
 <div ng-if="$ctrl.showTotal">
   <div class="page-header text-center">
     <h2>Total</h2>

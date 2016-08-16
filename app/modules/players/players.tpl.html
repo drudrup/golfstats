@@ -42,6 +42,12 @@
     </div>
   </div>
   
+  <div class="form-group player-log-putts">
+    <label class="btn">
+      <input type="checkbox" ng-name="putts+$player.id" ng-model="player.logPutts">&nbsp;
+    </label>
+  </div>
+  
   <div class="btn-group pull-right">
     <button class="btn btn-danger" ng-click="$ctrl.removePlayer(player.id)" ng-class="{hidden: $ctrl.players.length<2}"> X </button>
   </div>
