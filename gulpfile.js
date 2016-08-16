@@ -6,6 +6,7 @@ var uglify = require('gulp-uglify');
 var templateCache = require('gulp-angular-templatecache');
 
 gulp.task('default', ['less','tpl','js','watch']);
+gulp.task('prod', ['less','tpl','js-prod']);
 
 // LESS
 gulp.task('less', function () {
@@ -35,6 +36,12 @@ var JSarray = [
   "./app/components/version/interpolate-filter.js"
 ]
 gulp.task('js', function(){
+  return gulp.src(JSarray)
+             .pipe(concat("scripts.js"))
+             //.pipe(uglify())
+             .pipe(gulp.dest("./app/dist/"));
+});
+gulp.task('js-prod', function(){
   return gulp.src(JSarray)
              .pipe(concat("scripts.js"))
              .pipe(uglify())
