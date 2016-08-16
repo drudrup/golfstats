@@ -13,8 +13,8 @@ Parcours: {{$ctrl.course.name}}
 
   <div ng-repeat="player in $ctrl.players" class="form-inline well well-sm text-right score-card-hole">
     
-    <div class="pull-left text-left">
-      <strong>{{player.name}}</strong><br/>
+    <div class="text-left">
+      <strong>{{player.name}}</strong>
       
       <span class="tee-color" ng-class="player.tee"></span> 
 
@@ -28,14 +28,20 @@ Parcours: {{$ctrl.course.name}}
       <span class="badge" ng-if="player.holes[$ctrl.currentHole-1].cr > 0">+{{player.holes[$ctrl.currentHole-1].cr}}</span>
     </div>
     
-    <div slider ng-model="player.holes[$ctrl.currentHole-1].score"></div>
-    <div slider ng-model="player.holes[$ctrl.currentHole-1].putts" ng-if="player.logPutts"></div>
+    <div class="row">
+      <div class="col-xs-8">
+        <br/><div slider ng-model="player.holes[$ctrl.currentHole-1].score"></div>
+        <br/><div slider ng-model="player.holes[$ctrl.currentHole-1].putts" ng-if="player.logPutts"></div>
+      </div>
+      
+      <div class="col-xs-4">
+        <!-- <button class="btn btn-default" ng-click="$ctrl.removeStroke(player)">-</button> -->
+        <strong class="h1">{{player.holes[$ctrl.currentHole-1].score}}</strong>
+        <span class="badge" ng-if="player.logPutts">{{player.holes[$ctrl.currentHole-1].putts}}</span>
+        <!-- <button class="btn btn-default" ng-click="$ctrl.addStroke(player)">+</button> -->
+      </div>
+    </div>
     
-    <!-- <button class="btn btn-default" ng-click="$ctrl.removeStroke(player)">-</button> -->
-    <strong class="h1">{{player.holes[$ctrl.currentHole-1].score}}</strong>
-    <span class="badge" ng-if="player.logPutts">{{player.holes[$ctrl.currentHole-1].putts}}</span>
-    <!-- <button class="btn btn-default" ng-click="$ctrl.addStroke(player)">+</button> -->
-
   </div>
 
   <div class="clearfix">

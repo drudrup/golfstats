@@ -91,6 +91,12 @@ angular.
             }
           }
         };
+      self.calculScores = function(){
+        var playerCount = self.players.length;
+        for (var i = 0 ; i < playerCount ; i++){
+          self.calculScore(self.players[i]);
+        }
+      }
 
       // Affichage trou par trou
       self.currentHole = 1;
@@ -105,6 +111,7 @@ angular.
       self.showTotal = false;
       self.toggleTotal = function(){
         self.showTotal = !self.showTotal;
+        self.calculScores();
       }
       
     }]
