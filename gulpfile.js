@@ -33,7 +33,8 @@ var JSarray = [
   "./app/modules/templates.js",
   "./app/components/version/version.js",
   "./app/components/version/version-directive.js",
-  "./app/components/version/interpolate-filter.js"
+  "./app/components/version/interpolate-filter.js",
+  "./app/bower_components/rangeslider.js/dist/rangeslider.js"
 ]
 gulp.task('js', function(){
   return gulp.src(JSarray)

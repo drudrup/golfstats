@@ -102,6 +102,7 @@ angular.
       self.currentHole = 1;
       self.nextHole = function(){
         if(self.currentHole < self.course.holesCount) self.currentHole++;
+        
       }
       self.prevHole = function(){
         if(self.currentHole > 1) self.currentHole--;
@@ -124,19 +125,20 @@ angular.
         },
       link: function(scope, elem, attrs) {
 
-        console.log(scope.ngModel);
+        //console.log(attrs);
+        //console.log(scope.ngModel);
 
-        return $(elem).slider({
-          range: "min",
-          min: 0,
-          max: 10,
-          animate: true,
-          value: scope.ngModel,
-          slide: function(event, ui) {
-            return scope.$apply(function(){
-              scope.ngModel = ui.value;
-            });
-          }
+        return $(elem).rangeslider({
+              polyfill: false,
+
+              // Callback function
+              onInit: function() {},
+
+              // Callback function
+              onSlide: function(position, value) {},
+
+              // Callback function
+              onSlideEnd: function(position, value) {}
         });
       }
     };

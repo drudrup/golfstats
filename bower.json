@@ -15,6 +15,7 @@
     "jquery-ui-bootstrap": "0.2.5",
     "bootstrap": "3.3.6",
     "bootstrap-switch": "3.3.2",
-    "bootstrap-material-design": "0.5.10"
+    "bootstrap-material-design": "0.5.10",
+    "rangeslider.js": "2.x"
   }
 }

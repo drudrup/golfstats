@@ -30,8 +30,8 @@ Parcours: {{$ctrl.course.name}}
     
     <div class="row">
       <div class="col-xs-8">
-        <br/><div slider ng-model="player.holes[$ctrl.currentHole-1].score"></div>
-        <br/><div slider ng-model="player.holes[$ctrl.currentHole-1].putts" ng-if="player.logPutts"></div>
+        <input slider type="range" min="0" max="12" value="0" step="1" ng-model="player.holes[$ctrl.currentHole-1].score" data-rangeslider />
+        <input slider type="range" min="0" max="12" value="0" step="1" ng-model="player.holes[$ctrl.currentHole-1].putts" data-rangeslider ng-if="player.logPutts"/>
       </div>
       
       <div class="col-xs-4">
