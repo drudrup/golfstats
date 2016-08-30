@@ -6,40 +6,45 @@ Parcours: {{$ctrl.course.name}}
 -->
 
 <!-- Trou par trou -->
-<div ng-if="!$ctrl.showTotal">
-  <div class="page-header text-right">
-    <h2><span class="pull-left">Hole {{$ctrl.currentHole}}</span><small>Par {{$ctrl.course.tees[0].holes[$ctrl.currentHole].par}}<br/>Hcp {{$ctrl.course.tees[0].holes[$ctrl.currentHole].hcp}}</small></h2> 
-  </div>
-
-  <div ng-repeat="player in $ctrl.players" class="form-inline well well-sm text-right score-card-hole">
+<div ng-class="{hidden: $ctrl.showTotal}">
+  
+  <div ng-repeat="hole in $ctrl.players[0].holes" ng-class="{hidden: (hole.num-1+1) != $ctrl.currentHole}">
     
-    <div class="text-left">
-      <strong>{{player.name}}</strong>
-      
-      <span class="tee-color" ng-class="player.tee"></span> 
-
-      <span ng-if="player.tee == 'red'">{{$ctrl.course.tees[0].holes[$ctrl.currentHole].distance}}</span>
-      <span ng-if="player.tee == 'blue'">{{$ctrl.course.tees[1].holes[$ctrl.currentHole].distance}}</span>
-      <span ng-if="player.tee == 'yellow'">{{$ctrl.course.tees[2].holes[$ctrl.currentHole].distance}}</span>
-      <span ng-if="player.tee == 'white'">{{$ctrl.course.tees[3].holes[$ctrl.currentHole].distance}}</span>
-      <span ng-if="player.tee == 'black'">{{$ctrl.course.tees[4].holes[$ctrl.currentHole].distance}}</span>
-      m
-
-      <span class="badge" ng-if="player.holes[$ctrl.currentHole-1].cr > 0">+{{player.holes[$ctrl.currentHole-1].cr}}</span>
+    <div class="page-header text-right">
+      <h2><span class="pull-left">Hole {{hole.num}}</span><small>Par {{$ctrl.course.tees[0].holes[hole.num-1+1].par}}<br/>Hcp {{$ctrl.course.tees[0].holes[hole.num-1+1].hcp}}</small></h2> 
     </div>
     
-    <div class="row">
-      <div class="col-xs-8">
-        <input slider type="range" min="0" max="12" value="0" step="1" ng-model="player.holes[$ctrl.currentHole-1].score" data-rangeslider />
-        <input slider type="range" min="0" max="12" value="0" step="1" ng-model="player.holes[$ctrl.currentHole-1].putts" data-rangeslider ng-if="player.logPutts"/>
+    <div ng-repeat="player in $ctrl.players" class="form-inline well well-sm text-right score-card-hole">
+    
+      <div class="text-left">
+        <strong>{{player.name}}</strong>
+        
+        <span class="tee-color" ng-class="player.tee"></span> 
+
+        <span ng-if="player.tee == 'red'">{{$ctrl.course.tees[0].holes[hole.num].distance}}</span>
+        <span ng-if="player.tee == 'blue'">{{$ctrl.course.tees[1].holes[hole.num].distance}}</span>
+        <span ng-if="player.tee == 'yellow'">{{$ctrl.course.tees[2].holes[hole.num].distance}}</span>
+        <span ng-if="player.tee == 'white'">{{$ctrl.course.tees[3].holes[hole.num].distance}}</span>
+        <span ng-if="player.tee == 'black'">{{$ctrl.course.tees[4].holes[hole.num].distance}}</span>
+        m
+
+        <span class="badge" ng-if="player.holes[hole.num-1].cr > 0">+{{player.holes[hole.num-1].cr}}</span>
       </div>
       
-      <div class="col-xs-4">
-        <!-- <button class="btn btn-default" ng-click="$ctrl.removeStroke(player)">-</button> -->
-        <strong class="h1">{{player.holes[$ctrl.currentHole-1].score}}</strong>
-        <span class="badge" ng-if="player.logPutts">{{player.holes[$ctrl.currentHole-1].putts}}</span>
-        <!-- <button class="btn btn-default" ng-click="$ctrl.addStroke(player)">+</button> -->
+      <div class="row">
+        <div class="col-xs-8">
+          <input slider type="range" min="0" max="12" value="0" step="1" ng-model="player.holes[hole.num-1].score" data-rangeslider />
+          <!-- <input slider type="range" min="0" max="12" value="0" step="1" ng-model="player.holes[hole.num-1].putts" data-rangeslider ng-if="player.logPutts"/> -->
+        </div>
+        
+        <div class="col-xs-4">
+          <!-- <button class="btn btn-default" ng-click="$ctrl.removeStroke(player)">-</button> -->
+          <strong class="h1">{{player.holes[hole.num-1].score}}</strong>
+          <span class="badge" ng-if="player.logPutts">{{player.holes[hole.num-1].putts}}</span>
+          <!-- <button class="btn btn-default" ng-click="$ctrl.addStroke(player)">+</button> -->
+        </div>
       </div>
+      
     </div>
     
   </div>
@@ -54,7 +59,7 @@ Parcours: {{$ctrl.course.name}}
 
 
 <!-- TOTAL -->
-<div ng-if="$ctrl.showTotal">
+<div ng-class="{hidden: !$ctrl.showTotal}">
   <div class="page-header text-center">
     <h2>Total</h2>
   </div>
