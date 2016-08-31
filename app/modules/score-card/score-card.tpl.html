@@ -11,7 +11,7 @@ Parcours: {{$ctrl.course.name}}
   <div ng-repeat="hole in $ctrl.players[0].holes" ng-class="{hidden: (hole.num-1+1) != $ctrl.currentHole}">
     
     <div class="page-header text-right">
-      <h2><span class="pull-left">Hole {{hole.num}}</span><small>Par {{$ctrl.course.tees[0].holes[hole.num-1+1].par}}<br/>Hcp {{$ctrl.course.tees[0].holes[hole.num-1+1].hcp}}</small></h2> 
+      <h2><span class="pull-left">Trou {{hole.num}}</span><small>Par {{$ctrl.course.tees[0].holes[hole.num-1+1].par}}<br/>Hcp {{$ctrl.course.tees[0].holes[hole.num-1+1].hcp}}</small></h2> 
     </div>
     
     <div ng-repeat="player in $ctrl.players" class="form-inline well well-sm text-right score-card-hole">
@@ -50,8 +50,8 @@ Parcours: {{$ctrl.course.name}}
   </div>
 
   <div class="clearfix">
-    <button class="btn btn-default pull-left" ng-click="$ctrl.prevHole()" ng-if="$ctrl.currentHole > 1">Prev hole</button>
-    <button class="btn btn-success pull-right" ng-click="$ctrl.nextHole()" ng-if="$ctrl.currentHole < $ctrl.course.holesCount">Next hole</button>
+    <button class="btn btn-default pull-left" ng-click="$ctrl.prevHole()" ng-if="$ctrl.currentHole > 1">Précédent</button>
+    <button class="btn btn-success pull-right" ng-click="$ctrl.nextHole()" ng-if="$ctrl.currentHole < $ctrl.course.holesCount">Suivant</button>
     <button class="btn btn-danger pull-right" ng-click="$ctrl.toggleTotal()" ng-if="$ctrl.currentHole == $ctrl.course.holesCount">Total</button>
   </div>
 
@@ -65,7 +65,7 @@ Parcours: {{$ctrl.course.name}}
   </div>
 
   <div ng-repeat="player in $ctrl.players" class="panel panel-default">
-    <div class="panel-heading"><strong>{{player.name}}</strong><br/>Stroke: {{player.scoreStroke}} - Stb Brut: {{player.scoreStbBrut}} - Stb Net: {{player.scoreStbNet}}</div>
+    <div class="panel-heading"><strong>{{player.name}}</strong><br/>Stroke: {{player.scoreStroke}} - Brut: {{player.scoreStbBrut}} - Net: {{player.scoreStbNet}}</div>
 
     <div class="table-responsive">
       <table class="table table-striped table-bordered table-condensed text-center">
@@ -100,8 +100,8 @@ Parcours: {{$ctrl.course.name}}
 
   </div>
 
-  <button class="btn btn-default" ng-click="$ctrl.toggleTotal()">Back</button>
+  <button class="btn btn-default" ng-click="$ctrl.toggleTotal()">Modifier les scores</button>
 
-  <a href="/#!/" class="btn btn-primary pull-right">Homepage</a>
+  <a href="/#!/" class="btn btn-primary pull-right">Retour à l'accueil</a>
 
 </div>

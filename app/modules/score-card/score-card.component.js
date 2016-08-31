@@ -85,7 +85,7 @@ angular.
 
           for(var j = 0; j < player.holes.length; j++){
             if(self.players[pid].holes[j].score > 0){
-              self.players[pid].scoreStroke  += self.players[pid].holes[j].score;
+              self.players[pid].scoreStroke  += self.players[pid].holes[j].score*1;
               self.players[pid].scoreStbBrut += ((self.players[pid].holes[j].score - self.players[pid].holes[j].par - 2) < 0) ? -(self.players[pid].holes[j].score - self.players[pid].holes[j].par - 2) : 0;
               self.players[pid].scoreStbNet  += ((self.players[pid].holes[j].score - self.players[pid].holes[j].cr - self.players[pid].holes[j].par - 2) < 0) ? -(self.players[pid].holes[j].score - self.players[pid].holes[j].cr - self.players[pid].holes[j].par - 2) : 0;
             }

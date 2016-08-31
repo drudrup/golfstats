@@ -2,7 +2,7 @@ angular.
   module('players').
   factory('PlayersService', function(){
     var players = getCurrentPlayersInLocalStorage();
-    if(players == null) players = [{id:0,name:"Player 1",index:54,tee:"yellow",gender:"man"}];
+    if(players == null) players = [{id:0,name:"Joueur 1",index:54,tee:"yellow",gender:"man"}];
     
     function setPlayers(value){
       players = value;

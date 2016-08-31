@@ -1,33 +1,44 @@
-<div class="text-center">
+<div class="">
 
-  <div class="page-header">
-    <h1>Search for a golf</h1>
+  <div class="page-header text-center">
+    <!--
+    <h1>Search for a golf</h1> -->
+    <h1>Sélection du golf</h1>
   </div>
 
   <div class="alert alert-info text-center" role="alert" ng-if="!$ctrl.golfsListReady">
-  A moment, please,<br/>golfs list is being loaded...
+  Mise à jour des parcours des golfs<br/>Connexion en cours...
   </div>
 
   <div ng-if="$ctrl.golfsILScount > 0">
-	<h2>Favorites</h2>
-    <a class="btn btn-brand btn-block"
-     ng-repeat="golf in $ctrl.golfsInLocalStorage"
-     ng-click="$ctrl.setGolfClub(golf)">
-       {{golf.name}}
-	</a>
+    
+    <div class="btn-group pull-right" role="group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Golfs favoris
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li ng-repeat="golf in $ctrl.golfsInLocalStorage">
+          <a ng-click="$ctrl.setGolfClub(golf)">{{golf.name}}</a>
+        </li>
+      </ul>
+    </div>
+    
   </div>
 
   <div class="form-group form-group-lg" ng-class="{hidden: !$ctrl.golfsListReady}">
-    <input class="form-control" type="text" id="searchGolf" ng-model="$ctrl.golfClub.name" placeholder="Enter golf name"/>
+    <input class="form-control" type="text" id="searchGolf" ng-model="$ctrl.golfClub.name" placeholder="Entrer le nom du golf"/>
   </div>
 
-  <a href="/#!/players"
-     class="btn btn-success btn-block"
-     ng-repeat="course in $ctrl.golfClub.terrains"
-     ng-class="{active: course.code == $ctrl.golfCourse.code}"
-     ng-click="$ctrl.submit(course.code)">
-      {{course.name}}
-  </a>
+  <div class="clearfix">
+    <a href="/#!/players"
+       class="btn btn-success btn-block"
+       ng-repeat="course in $ctrl.golfClub.terrains"
+       ng-class="{active: course.code == $ctrl.golfCourse.code}"
+       ng-click="$ctrl.submit(course.code)">
+        {{course.name}}
+    </a>
+  </div>
   
   
 </div>
